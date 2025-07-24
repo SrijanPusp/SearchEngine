@@ -26,6 +26,7 @@ public class Crawler {
         {
               Document document = Jsoup.connect(url).timeout(5000).get();
                 //ye wala kaam ab indexer ke liye karenge
+                Indexer indexer = new Indexer(document, url);
                 System.out.println(document.title());
                 Elements availableLinksOnPage = document.select("a[href]");
                 for(Element currentLink: availableLinksOnPage){
@@ -39,6 +40,6 @@ public class Crawler {
     }
     public static void main(String[] args){
         Crawler crawler = new Crawler();
-        crawler.getPageTextAndLinks("https://indiatimes.com/", 1);
+        crawler.getPageTextAndLinks("https://roadmap.sh/", 1);
     }
 }
